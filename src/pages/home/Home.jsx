@@ -1,24 +1,16 @@
-import { useState } from "react";
-import { auth } from "../../firebase/firebase";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { useEffect, useState } from "react";
+import Hero from "../../components/hero/Hero";
+import { db } from "../../firebase/firebase";
+import { collection, getDocs } from "firebase/firestore";
+import PopularCategories from "../../components/popularCategories/PopularCategories";
 
 const Home = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleRegister = async (e) => {
-    e.preventDefault();
-    try {
-      await createUserWithEmailAndPassword(auth, username, password);
-      console.log("User registered successfully");
-    } catch (error) {
-      console.error("Error creating user:", error.message);
-    }
-  };
+  
 
   return (
     <div>
-      
+      <Hero />
+      <PopularCategories/>
     </div>
   );
 };
